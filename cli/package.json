@@ -1,0 +1,20 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "check": "tsc --noEmit",
+    "start": "npm run check && node src/server.ts"
+  },
+  "engines": {
+    "node": ">= 22.18"
+  },
+  "dependencies": {
+    "@h7/compute-js-dynamic-build": "^0.1.1",
+    "command-line-args": "^6.0.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.3",
+    "@types/node": "^24.10.1"
+  }
+}

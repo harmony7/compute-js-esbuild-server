@@ -61,7 +61,8 @@ app.all('/code-block/:name/exec', async (c) => {
   let module: any;
   try {
     module = await loadModule(codeBlockText);
-  } catch {
+  } catch (err) {
+    console.error(String(err));
     return c.json({ error: "Unable to load code block", name }, 500);
   }
 

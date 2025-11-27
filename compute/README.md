@@ -12,6 +12,11 @@ Its responsibilities:
 * POST `/code-block/:name/build` accepts a JavaScript code snippet written for execution on Fastly Compute.
     * Add backend authorization header (`x-build-key`)
     * Proxies the bytes of the input file to the backend service at `/build`
+    * Fields should be sent to the backend as multipart/form-data, and are expected to have these fields:
+       * `file`: _File_ - required. the bytes of the source file.
+       * `importmap`: _File_ - optional. the bytes of the importmap file.
+       * `minify`: _`true` or `false`_ - optional. If `'true'`, then the build output is minified.
+       * `mode`: _`prod` or `dev`_ - optional. If `'prod'`, then `process.env.NODE_ENV` is set to `'production'` during build. default `'prod'`.
     * Saves the returned output to the KV Store using the named key.
 * `/code-block/:name/exec` (any verb)
     * Loads the module saved prior by the above steps with the given name.
@@ -62,7 +67,7 @@ BUILD_API_KEY=dev npm run start
 In yet another terminal, from the project root, POST an input file to the Compute service. This calls out to the backend to build the code snippet, and then saves the returned snippet to the KV Store key `marked`.
 
 ```bash
-curl -F "file=@./samples/marked/index.js" "http://localhost:7676/code-block/marked/build"
+curl -F "file=@./samples/marked/index.js" -F "importmap=@./samples/marked/importmap.json" "http://localhost:7676/code-block/marked/build"
 ```
 
 Then, run execute this code on Compute:

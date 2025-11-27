@@ -9,7 +9,7 @@
     "node": ">= 22.18"
   },
   "dependencies": {
-    "@h7/compute-js-dynamic-build": "^0.1.1",
+    "@h7/compute-js-dynamic-build": "^0.2.1",
     "command-line-args": "^6.0.1",
     "typescript": "^5.9.3"
   },

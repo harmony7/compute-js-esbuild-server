@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "marked": "https://unpkg.com/marked"
+  }
+}

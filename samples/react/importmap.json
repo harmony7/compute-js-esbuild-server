@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "react": "https://unpkg.com/react",
+    "react-dom": "https://unpkg.com/react-dom",
+    "react-dom/": "https://unpkg.com/react-dom/"
+  }
+}
